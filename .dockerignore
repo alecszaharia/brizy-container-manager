@@ -1,0 +1,15 @@
+*
+
+!.docker/
+!bin/
+!app/
+!public/
+!src/
+!logs
+!var
+
+!.env
+!composer.*
+!Dockerfile
+!LICENSE
+!README.md

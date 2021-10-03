@@ -6,13 +6,12 @@ volumes:
 
 services:
   slim:
-    image: php:8-alpine
-    working_dir: /var/www
-    command: php -S 0.0.0.0:8080 -t public
-    environment:
-      docker: "true"
+    build:
+      context: .
+      target: development
+      args:
+        UID: ${UID:-502}
     ports:
-      - 8080:8080
+      - 80:80
     volumes:
       - .:/var/www
-      - logs:/var/www/logs
