@@ -1,0 +1,41 @@
+POST http://localhost:8080/containers
+Content-Type: application/json
+
+{
+  "name": "testing-editor-pr-15601",
+  "domain": "pr-15601.editor.office.brizy.org",
+  "image": "docker-image:tag",
+  "options": {
+    "-d":"",
+    "--network":"traefik",
+    "--network-alias":"testing-editor-pr-15601",
+    "--name":"testing-editor-pr-15601",
+    "--cpus":"1",
+    "--memory":"1g",
+    "-e":["MAX_CPUS=1"],
+    "--label":["traefik.docker.network\"=\"traefik",
+    "traefik.enable\"=\"true",
+    "traefik.frontend.rule\"=\"Host:pr-15601.editor.office.brizy.org",
+    "traefik.port\"=\"3000",
+    "traefik.frontend.headers.customRequestHeaders\"=\"Access-Control-Allow-Methods:POST,GET,OPTIONS,DELETE,PUT",
+    "traefik.frontend.headers.customRequestHeaders\"=\"Access-Control-Max-Age:1000",
+    "traefik.frontend.headers.customRequestHeaders\"=\"Access-Control-Allow-Headers:x-requested-with,Content-Type,origin,authorization,accept,client-security-token"]
+  },
+  "command": ""
+}
+
+###
+
+PUT http://localhost:8080/containers/61575c93306366915400011d
+Content-Type: application/json
+
+{
+  "domain": "pr-15601.editor.office.brizy.org"
+}
+
+###
+
+DELETE http://localhost:8080/containers/61575c6c383866f54300031b
+Content-Type: application/json
+
+###
